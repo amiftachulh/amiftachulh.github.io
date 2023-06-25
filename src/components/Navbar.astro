@@ -1,0 +1,39 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<nav>
+  <a
+    href="https://github.com/amiftachulh"
+    target="_blank"
+    rel="noopener noreferrer">GitHub</a
+  >
+  <a
+    href="https://www.linkedin.com/in/amiftachulh/"
+    target="_blank"
+    rel="noopener noreferrer">LinkedIn</a
+  >
+  <ThemeToggle />
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  @media (width >= 640px) {
+    nav {
+      justify-content: end;
+    }
+  }
+
+  a {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+</style>

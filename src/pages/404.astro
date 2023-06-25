@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Not Found"
+  description="Page that you want to access is not found."
+>
+  <main>
+    <h1>Page Not Found</h1>
+    <a href="/">Back to Homepage</a>
+  </main>
+</Layout>
+
+<style>
+  main {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    min-height: 100vh;
+  }
+
+  a {
+    margin-top: 0.5rem;
+  }
+</style>
