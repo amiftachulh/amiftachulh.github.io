@@ -1,21 +1,33 @@
 ---
-import nodejs from '../assets/svg/nodejs.svg';
+import kanban from '../assets/svg/kanban.svg';
 import weather from '../assets/svg/weather.svg';
+import guitar from '../assets/svg/guitar.svg';
 
-const projects = [
+type Project = {
+  title: string;
+  img: any;
+  description: string;
+  url: string;
+}
+
+const projects: Project[] = [
+  {
+    title: 'KAGI Music',
+    img: guitar,
+    description: 'Personal website to share guitar tabs of my favorite songs that I make. Built with Sveltekit.',
+    url: 'https://github.com/amiftachulh/kagi-music'
+  },
   {
     title: 'Weather App',
     img: weather,
-    description:
-      'A simple weather and forecast app. Built with React, JavaScript, and Tailwind.',
-    url: 'https://github.com/amiftachulh/weather-app',
+    description: 'A simple weather and forecast app. Built with React, JavaScript, and Tailwind.',
+    url: 'https://github.com/amiftachulh/weather-app'
   },
   {
     title: 'NoreTask (Backend)',
-    img: nodejs,
-    description:
-      'Project I worked on during my internship. A simple microservices built with Node.js and TypeScript.',
-    url: 'https://github.com/amiftachulh/nore-task-backend',
+    img: kanban,
+    description: 'Project I worked on during my internship. A simple microservices built with Node.js and TypeScript.',
+    url: 'https://github.com/amiftachulh/nore-task-backend'
   },
 ];
 ---
@@ -44,15 +56,16 @@ const projects = [
 
 <style>
   .project-wrapper {
-    display: flex;
-    gap: 2rem;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
   }
 
   .image {
     display: grid;
     place-items: center;
     background-color: var(--item-bg);
+    color: var(--text-color);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -74,15 +87,5 @@ const projects = [
 
   a:hover {
     text-decoration: underline;
-  }
-
-  @media (width >= 768px) {
-    .project-wrapper {
-      flex-direction: row;
-    }
-
-    .project {
-      max-width: 320px;
-    }
   }
 </style>
