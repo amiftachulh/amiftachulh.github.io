@@ -1,39 +1,48 @@
 ---
+import GitHub from "../assets/icons/github.astro";
+import LinkedIn from "../assets/icons/linkedin.astro";
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <nav>
-  <a
-    href="https://github.com/amiftachulh"
-    target="_blank"
-    rel="noopener noreferrer">GitHub</a
-  >
-  <a
-    href="https://www.linkedin.com/in/amiftachulh/"
-    target="_blank"
-    rel="noopener noreferrer">LinkedIn</a
-  >
+  <a href="https://github.com/amiftachulh" target="_blank" rel="noopener noreferrer">
+    <div class="text">GitHub</div>
+    <GitHub />
+  </a>
+  <a href="https://www.linkedin.com/in/amiftachulh/" target="_blank" rel="noopener noreferrer">
+    <div class="text">LinkedIn</div>
+    <LinkedIn>
+  </a>
   <ThemeToggle />
 </nav>
 
 <style>
   nav {
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
   }
 
-  @media (width >= 640px) {
-    nav {
-      justify-content: end;
-    }
-  }
-
   a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .3rem;
+    place-items: center;
+    color: var(--nav-item-color);
     font-weight: bold;
     text-transform: uppercase;
+  }
+
+  a:hover {
+    color: var(--nav-item-hover-color);
+  }
+
+  @media (width <= 380px) {
+    a .text {
+      display: none;
+    }
   }
 </style>

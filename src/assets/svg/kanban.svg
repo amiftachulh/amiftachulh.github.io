@@ -1,1 +1,11 @@
-<svg id="eiXWEx2LbqV1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><path d="M19,3L5,3C3.9,3,3,3.9,3,5v14c0,1.1.9,2,2,2h14c1.1,0,2-.9,2-2v-14c0-1.1-.9-2-2-2ZM9,17h-2L7,7h2v10Zm4-5h-2v-5h2v5Zm4,3h-2v-8h2v8Z" fill="#39b772"/></svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+>
+  <path
+    fill="#528498"
+    d="M7 17h2V7H7v10Zm4-5h2V7h-2v5Zm4 3h2V7h-2v8ZM5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.588 1.413T19 21H5Z"
+  />
+</svg>
