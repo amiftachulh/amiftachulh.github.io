@@ -1,48 +1,107 @@
 ---
-import GitHub from "../assets/icons/github.astro";
-import LinkedIn from "../assets/icons/linkedin.astro";
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<nav>
-  <a href="https://github.com/amiftachulh" target="_blank" rel="noopener noreferrer">
-    <div class="text">GitHub</div>
-    <GitHub />
-  </a>
-  <a href="https://www.linkedin.com/in/amiftachulh/" target="_blank" rel="noopener noreferrer">
-    <div class="text">LinkedIn</div>
-    <LinkedIn>
-  </a>
-  <ThemeToggle />
+<nav id="navbar">
+  <div class="wrapper">
+    <button class="menu-btn" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.75rem" height="1.75rem" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M4 17.27v-1h16v1zm0-4.77v-1h16v1zm0-4.77v-1h16v1z" />
+      </svg>
+    </button>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+    </div>
+    <ThemeToggle />
+  </div>
 </nav>
 
 <style>
   nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    font-weight: 700;
+    background: hsl(var(--secondary));
+    border-bottom: 1px solid hsl(var(--border));
+    z-index: 1;
+  }
+
+  .wrapper {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    height: 100%;
   }
 
-  a {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: .3rem;
-    place-items: center;
-    color: var(--nav-item-color);
-    font-weight: bold;
-    text-transform: uppercase;
+  .menu-btn {
+    display: none;
+    background: none;
+    color: var(--foreground);
+    border: 0;
   }
 
-  a:hover {
-    color: var(--nav-item-hover-color);
+  .nav-links {
+    display: flex;
+    gap: 2rem;
   }
 
-  @media (width <= 380px) {
-    a .text {
+  @media (max-width: 540px) {
+    .menu-btn {
+      display: block;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
       display: none;
+      background: hsl(var(--secondary) / .5);
+      backdrop-filter: blur(5rem);
+      -webkit-backdrop-filter: blur(5rem);
+      border-bottom: 1px solid hsl(var(--border));
+      z-index: 2;
+    }
+
+    .nav-links.show {
+      display: flex;
+    }
+
+    .nav-links a {
+      padding: 1rem 2rem;
+      display: block;
+      text-align: center;
     }
   }
 </style>
+
+<script>
+  const menuBtn = document.querySelector('.menu-btn')!;
+  const navLinks = document.querySelector('.nav-links')!;
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  document.querySelectorAll('#navbar a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      history.replaceState(null, '', (e.target as HTMLAnchorElement).href);
+      navLinks.classList.remove('show');
+    });
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target as Node) && !menuBtn.contains(e.target as Node)) {
+      navLinks.classList.remove('show');
+    }
+  })
+</script>

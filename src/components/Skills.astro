@@ -2,19 +2,16 @@
 import { icons } from '../data/icons';
 ---
 
-<section>
-  <h2>Skills and Technologies 💻</h2>
+<section id="skills">
+  <h2 class="title">Skills</h2>
+  <p class="subtitle">Programming languages, frameworks, and tools that I've used.</p>
   <div class="skills">
-    {
-      icons.map((icon) => {
-        return (
-          <div class="icon">
-            <Fragment set:html={icon.file} />
-            <p>{icon.title}</p>
-          </div>
-        );
-      })
-    }
+    {icons.map((icon) => (
+      <div class="icon">
+        <Fragment set:html={icon.file} />
+        <span>{icon.title}</span>
+      </div>
+    ))}
   </div>
 </section>
 
@@ -24,6 +21,7 @@ import { icons } from '../data/icons';
     place-items: center;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 1rem;
+    margin-top: 2rem;
   }
 
   .icon {
@@ -33,11 +31,10 @@ import { icons } from '../data/icons';
     flex-direction: column;
     gap: 5px;
     width: 100%;
-    height: 100px;
-    background-color: var(--item-bg);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    height: 6.25rem;
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
     user-select: none;
     transition: transform 0.25s ease;
   }
@@ -46,7 +43,7 @@ import { icons } from '../data/icons';
     transform: scale(1.05);
   }
 
-  p {
-    font-size: 14px;
+  span {
+    font-size: 0.875rem;
   }
 </style>

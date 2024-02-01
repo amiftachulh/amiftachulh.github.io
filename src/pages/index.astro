@@ -1,31 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Intro from '../components/Intro.astro';
+import Header from '../components/Header.astro';
 import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
 import Experience from '../components/Experience.astro';
 import Education from '../components/Education.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-	title="Ahmad Miftachul Hidayat"
-	description="Ahmad Miftachul Hidayat is a Computer Engineering student at Diponegoro University with a strong passion for web development. His favorite technology is JavaScript. However, he is excited to learn other technology too."
+  title="Ahmad Miftachul Hidayat"
+  description="Ahmad Miftachul Hidayat is a Computer Engineering student at Diponegoro University with a strong passion for web development. His favorite technology is JavaScript. However, he is excited to learn other technology too."
 >
-	<main>
-		<Navbar />
-		<Intro />
-		<Skills />
-		<Projects />
-		<Experience />
-		<Education />
-		<Footer />
-	</main>
+  <Header />
+  <Skills />
+  <Projects />
+  <Experience />
+  <Education />
 </Layout>
-
-<style>
-	main {
-		max-width: 1024px;
-	}
-</style>

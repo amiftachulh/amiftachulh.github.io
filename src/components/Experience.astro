@@ -1,17 +1,19 @@
-<section>
-  <h2>Experience 🕒</h2>
+---
+import { experiences } from "../data/experiences"
+---
+
+<section id="experience">
+  <h2 class="title">Experience</h2>
+  <p class="subtitle">A glimpse of my work experience.</p>
   <div class="timeline-wrapper">
     <ul class="timeline">
-      <li class="timeline-item">
-        <h3>CV Nore Inovasi</h3>
-        <div class="timeline-date">December 2022 - March 2023</div>
-        <p class="timeline-description">
-          Internship - I worked as a Backend Developer, creating a REST API
-          using Node.js and some other things. Additionally, I learned about
-          microservices concepts and implemented certain aspect like decoupling
-          the services.
-        </p>
-      </li>
+      {experiences.map((experience) => (
+        <li class="timeline-item">
+          <h3>{experience.place}</h3>
+          <div class="timeline-date">{experience.date}</div>
+          <p class="timeline-description">{experience.description}</p>
+        </li>
+      ))}
     </ul>
   </div>
 </section>
@@ -19,10 +21,11 @@
 <style is:global>
   .timeline-wrapper {
     padding-left: 1rem;
+    margin-top: 2rem;
   }
 
   .timeline {
-    border-left: 1px solid var(--timeline-color);
+    border-left: 1px solid hsl(var(--accent));
     padding: 2rem 0;
     list-style: none;
   }
@@ -44,13 +47,19 @@
     width: 0.5rem;
     border-radius: 50%;
     aspect-ratio: 1;
-    background-color: var(--timeline-color);
-    outline: 0.25rem solid var(--timeline-color-500);
+    background-color: hsl(var(--accent));
+    outline: 0.25rem solid hsl(var(--accent) / .5);
   }
 
   .timeline-date {
+    margin-bottom: 0.5rem;
     font-size: 0.85rem;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    color: hsl(var(--primary));
+    font-weight: 700;
+  }
+
+  [data-theme='dark'] .timeline-date {
+    color: hsl(var(--accent));
   }
 </style>

@@ -1,120 +1,46 @@
-<label class="switch" for="checkbox">
-  <input type="checkbox" id="checkbox" />
-  <span class="slider round">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M20.354 15.354A9 9 0 0 1 8.646 3.646A9.003 9.003 0 0 0 12 21a9.003 9.003 0 0 0 8.354-5.646Z"
-      />
-    </svg>
-
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      class="sun"
-    >
-      <path
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0a4 4 0 0 1 8 0Z"
-      />
-    </svg>
-  </span>
-</label>
+<button class="theme-toggle" aria-label="Theme">
+  <svg class="sun" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 256 256">
+    <path fill="currentColor" d="M120 40V16a8 8 0 0 1 16 0v24a8 8 0 0 1-16 0m72 88a64 64 0 1 1-64-64a64.07 64.07 0 0 1 64 64m-16 0a48 48 0 1 0-48 48a48.05 48.05 0 0 0 48-48M58.34 69.66a8 8 0 0 0 11.32-11.32l-16-16a8 8 0 0 0-11.32 11.32Zm0 116.68l-16 16a8 8 0 0 0 11.32 11.32l16-16a8 8 0 0 0-11.32-11.32M192 72a8 8 0 0 0 5.66-2.34l16-16a8 8 0 0 0-11.32-11.32l-16 16A8 8 0 0 0 192 72m5.66 114.34a8 8 0 0 0-11.32 11.32l16 16a8 8 0 0 0 11.32-11.32ZM48 128a8 8 0 0 0-8-8H16a8 8 0 0 0 0 16h24a8 8 0 0 0 8-8m80 80a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0v-24a8 8 0 0 0-8-8m112-88h-24a8 8 0 0 0 0 16h24a8 8 0 0 0 0-16" />
+  </svg>
+  <svg class="moon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 256 256">
+    <path fill="currentColor" d="M233.54 142.23a8 8 0 0 0-8-2a88.08 88.08 0 0 1-109.8-109.8a8 8 0 0 0-10-10a104.84 104.84 0 0 0-52.91 37A104 104 0 0 0 136 224a103.09 103.09 0 0 0 62.52-20.88a104.84 104.84 0 0 0 37-52.91a8 8 0 0 0-1.98-7.98m-44.64 48.11A88 88 0 0 1 65.66 67.11a89 89 0 0 1 31.4-26A106 106 0 0 0 96 56a104.11 104.11 0 0 0 104 104a106 106 0 0 0 14.92-1.06a89 89 0 0 1-26.02 31.4" />
+  </svg>
+</button>
 
 <style>
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 48px;
-    height: 26px;
-    user-select: none;
-  }
-
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  .slider {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5px;
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-  }
-
-  .slider::before {
-    position: absolute;
-    content: '';
-    height: 20px;
-    width: 20px;
-    left: 3px;
-    background-color: white;
-    transition: 0.4s;
-  }
-
-  input:checked + .slider {
-    background-color: #454d53;
-  }
-
-  input:checked + .slider:before {
-    transform: translateX(22px);
-  }
-
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round::before {
-    border-radius: 50%;
+  .theme-toggle {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: none;
+    color: var(--card-foreground);
+    border: none;
   }
 </style>
 
 <script>
-  const toggle = document.getElementById('checkbox') as HTMLInputElement;
+  const toggle = document.querySelector('.theme-toggle');
+  const sun = document.querySelector<SVGSVGElement>('.sun');
+  const moon = document.querySelector<SVGSVGElement>('.moon');
 
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const currentTheme = localStorage.getItem('theme');
-
-  if (currentTheme) {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    if (currentTheme === 'dark') {
-      toggle.checked = true;
-    }
+  if (currentTheme === 'dark' || prefersDarkScheme) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    moon!.style.display = 'block';
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    sun!.style.display = 'block';
   }
 
-  function switchTheme(e: any) {
-    if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light');
-    }
+  function toggleIcon(theme: 'light' | 'dark') {
+    sun!.style.display = theme === 'light' ? 'block' : 'none';
+    moon!.style.display = theme === 'dark' ? 'block' : 'none';
   }
 
-  toggle.addEventListener('change', switchTheme, false);
+  toggle?.addEventListener('click', () => {
+    const newTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    toggleIcon(newTheme);
+  });
 </script>
