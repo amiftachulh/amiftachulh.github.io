@@ -26,9 +26,11 @@
   const currentTheme = localStorage.getItem('theme');
   if (currentTheme === 'dark' || prefersDarkScheme) {
     document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.style.colorScheme = 'dark';
     moon!.style.display = 'block';
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
+    document.documentElement.style.colorScheme = 'light';
     sun!.style.display = 'block';
   }
 
@@ -41,6 +43,7 @@
     const newTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    document.documentElement.style.colorScheme = newTheme;
     toggleIcon(newTheme);
   });
 </script>
