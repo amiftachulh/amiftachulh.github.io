@@ -6,6 +6,7 @@ import TypeScript from '../assets/svg/typescript.svg?raw';
 import Node from '../assets/svg/nodejs.svg?raw';
 import React from '../assets/svg/react.svg?raw';
 import Svelte from '../assets/svg/svelte.svg?raw';
+import NextJS from '../assets/svg/nextjs.svg?raw';
 import MySQL from '../assets/svg/mysql.svg?raw';
 import PostgreSQL from '../assets/svg/postgresql.svg?raw';
 import NGINX from '../assets/svg/nginx.svg?raw';
@@ -49,6 +50,10 @@ export const icons: Icon[] = [
   {
     title: 'Svelte',
     file: Svelte,
+  },
+  {
+    title: 'Next.js',
+    file: NextJS,
   },
   {
     title: 'MySQL',
